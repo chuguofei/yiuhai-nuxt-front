@@ -1,9 +1,32 @@
 <template>
-  <Tutorial/>
+  <div>
+    <home-info
+      :articleList="homeData.articleList"
+      :categoryList="homeData.categoryList"
+    ></home-info>
+  </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({})
+<script>
+import Vue from "vue";
+import HomeInfo from "~/components/home/HomeInfo.vue";
+export default Vue.extend({
+  components: { HomeInfo },
+  async asyncData({ app }) {
+    let [homeData] = await Promise.all([
+      app.$axios.get("/b/h/1").then((res) => {
+        let { articleList, categoryList } = res.data.data;
+        return {
+          articleList,
+          categoryList,
+        };
+      }),
+    ]);
+    return { homeData };
+  },
+});
 </script>
+
+
+<style lang="scss">
+</style>
