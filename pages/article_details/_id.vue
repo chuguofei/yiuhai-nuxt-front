@@ -14,18 +14,18 @@
                 <i class="fa fa-calendar font-15"></i>
                 <span class="font-15">{{ articleDetailComp.create_time }}</span>
               </div>
-              <div class="love">
-                <i class="fa fa-free-code-camp font-15"></i>
+              <div class="sentiment">
+                <i class="fa fa-eye" aria-hidden="true"></i>
                 <span class="font-15">9999</span>
               </div>
-              <div class="love">
+              <!-- <div class="love">
                 <i class="fa fa-heart font-15"></i>
                 <span class="font-15">9999</span>
               </div>
               <div class="collection">
                 <i class="fa fa-star font-15"></i>
                 <span class="font-15">9999</span>
-              </div>
+              </div> -->
             </div>
             <div class="article-details" id="content">
               <div v-html="mkContentComp"></div>
@@ -155,6 +155,8 @@ export default {
   }
   .article-common {
     user-select: none;
+    display: flex;
+    align-items: center;
     > div {
       margin: 8px 8px;
     }

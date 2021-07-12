@@ -20,13 +20,17 @@
             <span class="font-10">{{ item.create_time }}</span>
           </div>
           <div class="love">
+            <i class="fa fa-eye font-10" aria-hidden="true"></i>
+            <span class="font-10">9999</span>
+          </div>
+          <!-- <div class="love">
             <i class="fa fa-heart margin-right-5 font-10"></i>
             <span class="font-10">9999</span>
           </div>
           <div class="collection">
             <i class="fa fa-star margin-right-5 font-10"></i>
             <span class="font-10">9999</span>
-          </div>
+          </div> -->
         </div>
         <!-- 文章解释 -->
         <div class="eassay-explain">{{ item.article_explain }}</div>
