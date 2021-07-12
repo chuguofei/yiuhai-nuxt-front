@@ -35,7 +35,7 @@
           <span
             class="tag-item chip"
             :key="_item"
-            v-for="_item in item.article_tags.split('|')"
+            v-for="_item in item.article_tags.split(',')"
             >{{ _item }}</span
           >
         </div>
@@ -47,14 +47,19 @@
         </div>
       </div>
     </div>
-    <info-wrapper :rightCategoryArr="categoryList"></info-wrapper>
+    <info-wrapper
+      :rightCategoryArr="categoryList"
+      :rightTagArr="tagsList"
+      :articleCount="articleList.length"
+      :categoryCount="categoryList.length"
+      :tagsCount="tagsList.length"
+    ></info-wrapper>
   </div>
 </template>
 
 
 <script>
 import infoWrapper from "./HomeWrapper.vue";
-import axios from "axios";
 export default {
   components: { infoWrapper },
   props: {
@@ -63,6 +68,10 @@ export default {
       default: () => [],
     },
     categoryList: {
+      type: Array,
+      default: () => [],
+    },
+    tagsList: {
       type: Array,
       default: () => [],
     },
@@ -175,6 +184,8 @@ export default {
         border-top: 1px solid rgba(160, 160, 160, 0.2);
         border-bottom: 1px solid rgba(160, 160, 160, 0.2);
         padding: 5px 0;
+        height: 60px;
+        overflow: hidden;
         .tag-item {
           display: inline-block;
           height: 22px;

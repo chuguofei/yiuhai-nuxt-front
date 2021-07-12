@@ -4,8 +4,32 @@
     <template v-else>
       <a-row>
         <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
-          <div class="article-details" id="content">
-            <div v-html="mkContentComp"></div>
+          <div class="article-container">
+            <div class="article-title font-23 text-center margin-top-10">
+              {{ articleDetailComp.article_title }}
+            </div>
+            <!-- 工具 -->
+            <div class="article-common flex justify-center">
+              <div class="create-time">
+                <i class="fa fa-calendar font-15"></i>
+                <span class="font-15">{{ articleDetailComp.create_time }}</span>
+              </div>
+              <div class="love">
+                <i class="fa fa-free-code-camp font-15"></i>
+                <span class="font-15">9999</span>
+              </div>
+              <div class="love">
+                <i class="fa fa-heart font-15"></i>
+                <span class="font-15">9999</span>
+              </div>
+              <div class="collection">
+                <i class="fa fa-star font-15"></i>
+                <span class="font-15">9999</span>
+              </div>
+            </div>
+            <div class="article-details" id="content">
+              <div v-html="mkContentComp"></div>
+            </div>
           </div>
         </a-col>
         <a-col :xs="0" :sm="0" :md="0" :lg="6" :xl="6">
@@ -117,11 +141,23 @@ export default {
 .aircle-details-view {
   margin: 0 auto;
   width: 80%;
-  .article-details {
-    padding: 10px;
-    // width: 80%;
-    border: 1px #ccc dashed;
+  .article-container {
     background: #fff;
+    border: 1px #ccc dashed;
+    .article-details {
+      padding: 10px;
+      border-top: 1px dashed #999;
+      // width: 80%;
+    }
+  }
+  .article-title {
+    user-select: none;
+  }
+  .article-common {
+    user-select: none;
+    > div {
+      margin: 8px 8px;
+    }
   }
   .article-anchor {
     z-index: 100;
@@ -132,7 +168,7 @@ export default {
     width: 95%;
   }
   .article-anchor {
-    > div{
+    > div {
       width: initial;
       height: initial;
     }

@@ -2,7 +2,6 @@ $forEnd: 500; // 边距大小
 $fontSize: 100; // 字体大小
 $widthPercentage: 100; // 宽度百分比
 $widthPx: 500; // 宽度
-
 // margin
 @for $i from 1 through $forEnd {
     .margin-#{$i} {
@@ -16,6 +15,7 @@ $widthPx: 500; // 宽度
         margin-left: #{$i}px !important;
     }
 }
+
 // margin-right
 @for $i from 1 through $forEnd {
     .margin-right-#{$i} {
@@ -29,12 +29,14 @@ $widthPx: 500; // 宽度
         margin-top: #{$i}px !important;
     }
 }
+
 // margin-bottom
 @for $i from 1 through $forEnd {
     .margin-bottom-#{$i} {
         margin-bottom: #{$i}px !important;
     }
 }
+
 // margin-top margin-end
 @for $i from 1 through $forEnd {
     .margin-tb-#{$i} {
@@ -42,6 +44,7 @@ $widthPx: 500; // 宽度
         margin-bottom: #{$i}px !important;
     }
 }
+
 // margin-left margin-right
 @for $i from 1 through $forEnd {
     .margin-lr-#{$i} {
@@ -63,6 +66,7 @@ $widthPx: 500; // 宽度
         padding-left: #{$i}px !important;
     }
 }
+
 // padding-right
 @for $i from 1 through $forEnd {
     .padding-right-#{$i} {
@@ -76,12 +80,14 @@ $widthPx: 500; // 宽度
         padding-top: #{$i}px !important;
     }
 }
+
 // padding-bottom
 @for $i from 1 through $forEnd {
     .padding-bottom-#{$i} {
         padding-bottom: #{$i}px !important;
     }
 }
+
 // padding-top padding-end
 @for $i from 1 through $forEnd {
     .padding-tb-#{$i} {
@@ -89,6 +95,7 @@ $widthPx: 500; // 宽度
         padding-bottom: #{$i}px !important;
     }
 }
+
 // padding-left padding-right
 @for $i from 1 through $forEnd {
     .padding-lr-#{$i} {
@@ -103,6 +110,7 @@ $widthPx: 500; // 宽度
         font-size: #{$i}px !important;
     }
 }
+
 
 /*  -- flex弹性布局 -- */
 
@@ -206,6 +214,7 @@ $widthPx: 500; // 宽度
     justify-content: space-around;
 }
 
+
 /* -- 浮动 --  */
 
 .cf::after,
@@ -225,6 +234,7 @@ $widthPx: 500; // 宽度
 .fr {
     float: right;
 }
+
 
 /**
  * -- 代表百分比
@@ -268,6 +278,7 @@ $widthPx: 500; // 宽度
 .font-bold {
     font-weight: bold;
 }
+
 // 对其方式
 .text-center {
     text-align: center;
@@ -300,6 +311,7 @@ $widthPx: 500; // 宽度
 .font-red {
     color: red !important;
 }
+
 .font-blue {
     color: blue !important;
 }

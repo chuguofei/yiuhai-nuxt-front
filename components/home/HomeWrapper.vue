@@ -6,17 +6,24 @@
         <div class="my-photo">
           <img src="~/assets/images/blog-logo.jpg" />
         </div>
+        <div class="my-alias margin-tb-3">GF</div>
         <div class="flex margin-top-10 statistical">
           <div class="flex flex-direction align-center justify-center">
-            <h3>1</h3>
+            <h3 v-text="articleCount"></h3>
             <h6>文章</h6>
           </div>
           <div class="flex flex-direction align-center justify-center">
-            <h3>9</h3>
+            <h3 v-text="categoryCount"></h3>
             <h6>分类</h6>
+          </div>
+          <div class="flex flex-direction align-center justify-center">
+            <h3 v-text="tagsCount"></h3>
+            <h6>标签</h6>
           </div>
         </div>
       </div>
+      <!-- 生活账号 -->
+      <about-account></about-account>
       <!-- 分类 -->
       <div class="article-category-box">
         <div class="label margin-left-10">
@@ -53,7 +60,7 @@
             :key="index"
             class="t-e enter-y"
             :style="tagStyleComp()"
-            v-text="item"
+            v-text="item.tag"
           ></span>
         </div>
       </div>
@@ -69,40 +76,38 @@
 <script>
 import { getRandomColor, getRandomRGB } from "@/plugins/common";
 import AdvertisingHomeRight from "@/components/advertising/Home";
+import AboutAccount from "./AboutAccount.vue";
 export default {
-  components: { AdvertisingHomeRight },
+  components: { AdvertisingHomeRight, AboutAccount },
   props: {
     rightCategoryArr: {
       type: Array,
       default: () => [],
     },
+    rightTagArr: {
+      type: Array,
+      default: () => [],
+    },
+    // 文章数量
+    articleCount: {
+      type: Number,
+      default: 0,
+    },
+    // 分类数据
+    categoryCount: {
+      type: Number,
+      default: 0,
+    },
+    // 分类数据
+    tagsCount: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
       guanggaoIndex: 0, // 广告下标
-      // rightCategoryArr: [
-      //   { title: "Vue", number: 0 },
-      //   { title: "React", number: 0 },
-      //   { title: "Angular", number: 0 },
-      //   { title: "Flutter", number: 0 },
-      //   { title: "Java", number: 0 },
-      //   { title: "Python", number: 0 },
-      //   { title: "C++", number: 0 },
-      //   { title: "Golang", number: 0 },
-      //   { title: "Mysql", number: 0 },
-      // ],
       rightCategoryColosArr: [], // 分类颜色
-      rightTagArr: [
-        "VUE",
-        "React",
-        "Angular",
-        "Spring Boot",
-        "Dubbo",
-        "Zookpeer",
-        "Spring",
-        "Js",
-        "Jquery",
-      ],
     };
   },
   mounted() {
@@ -135,7 +140,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
     border-radius: 5px;
 
     .my-photo {
@@ -157,13 +162,27 @@ export default {
         }
       }
     }
+
+    .my-alias {
+      font-weight: bold;
+      user-select: none;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(
+        -225deg,
+        #473b7b 0%,
+        #3584a7 51%,
+        #30d2be 100%
+      );
+    }
+
     .statistical {
       border-bottom: 1px solid #ccc;
 
       & > div {
         padding: 0 25px;
-        &:nth-child(1) {
-          position: relative;
+        position: relative;
+        &:not(:last-child) {
           &:after {
             content: "";
             position: absolute;

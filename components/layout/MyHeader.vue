@@ -47,7 +47,6 @@ export default Vue.extend({
     return {
       menuArr: [
         { title: "首页", path: "/" },
-        { title: "标签", path: "" },
         { title: "时间轴", path: "/tl" },
         { title: "友链", path: "/fl" },
         { title: "导航", path: "/quicknav" },

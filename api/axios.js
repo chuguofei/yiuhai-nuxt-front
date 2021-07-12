@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:6666'
+axios.defaults.baseURL = '/api/'
 
 // 公共请求参数
 const commonParam = {
