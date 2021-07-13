@@ -1,6 +1,8 @@
 <template>
   <div>
-    <MyHeader></MyHeader>
+    <a-affix>
+      <MyHeader></MyHeader>
+    </a-affix>
     <nuxt />
     <MyFooted></MyFooted>
   </div>

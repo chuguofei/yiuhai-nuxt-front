@@ -48,12 +48,12 @@
           </li>
         </ul>
       </div>
-      <div class="article-tag-box margin-left-10 flex flex-wrap">
+      <div class="article-tag-box margin-left-10">
         <div class="label">
           <i class="fa fa-tags" aria-hidden="true"></i>
           <span class="margin-left-10">标签</span>
         </div>
-        <div class="margin-top-5">
+        <div class="margin-top-5 flex flex-wrap">
           <span class="t-e enter-y" :style="tagStyleComp()">全部</span>
           <span
             v-for="(item, index) in rightTagArr"

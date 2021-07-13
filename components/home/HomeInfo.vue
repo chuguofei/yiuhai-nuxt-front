@@ -21,7 +21,7 @@
           </div>
           <div class="love">
             <i class="fa fa-eye font-10" aria-hidden="true"></i>
-            <span class="font-10">9999</span>
+            <span class="font-10">{{item.article_sentiment}}</span>
           </div>
           <!-- <div class="love">
             <i class="fa fa-heart margin-right-5 font-10"></i>
@@ -122,6 +122,7 @@ export default {
       border-radius: 5px;
       padding: 5px;
       box-shadow: 0px 0px 5px #ccc;
+      background: #fff;
       width: calc(100% / 3 - 23px);
 
       &:hover {
@@ -137,7 +138,7 @@ export default {
           width: 100%;
           height: 100%;
           transition: all 0.6s;
-          object-fit: cover;
+          object-fit:contain;
           &:hover {
             cursor: pointer;
             -webkit-transform: scale(1.1);

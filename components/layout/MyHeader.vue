@@ -32,11 +32,11 @@
       </div>
     </div>
     <!-- 键盘敲字 -->
-    <div class="header-img-box">
+    <!-- <div class="header-img-box">
       <div class="typeing">
         <span id="work"></span>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -47,7 +47,6 @@ export default Vue.extend({
     return {
       menuArr: [
         { title: "首页", path: "/" },
-        { title: "时间轴", path: "/tl" },
         { title: "友链", path: "/fl" },
         { title: "导航", path: "/quicknav" },
         { title: "关于我", path: "/aboutme" },
@@ -73,10 +72,10 @@ export default Vue.extend({
     background: rgba(40, 42, 44, 0.6);
     z-index: 1000;
     width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
     /** PC端 */
     .header-menu-pc {
       display: flex;

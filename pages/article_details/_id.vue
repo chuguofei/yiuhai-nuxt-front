@@ -16,7 +16,7 @@
               </div>
               <div class="sentiment">
                 <i class="fa fa-eye" aria-hidden="true"></i>
-                <span class="font-15">9999</span>
+                <span class="font-15">{{articleDetailComp.article_sentiment}}</span>
               </div>
               <!-- <div class="love">
                 <i class="fa fa-heart font-15"></i>
