@@ -21,7 +21,7 @@
           </div>
           <div class="love">
             <i class="fa fa-eye font-10" aria-hidden="true"></i>
-            <span class="font-10">{{item.article_sentiment}}</span>
+            <span class="font-10">{{ item.article_sentiment }}</span>
           </div>
           <!-- <div class="love">
             <i class="fa fa-heart margin-right-5 font-10"></i>
@@ -33,7 +33,7 @@
           </div> -->
         </div>
         <!-- 文章解释 -->
-        <div class="eassay-explain">{{ item.article_explain }}</div>
+        <div class="eassay-explain">{{ item.article_content }}</div>
         <!-- 文章标签 -->
         <div class="eassay-tag flew flex-warp">
           <span
@@ -131,6 +131,8 @@ export default {
       }
 
       .eassay-preview-img-box {
+        // width: 100%;
+        height: 250px;
         width: 100%;
         border-radius: 10px;
         overflow: hidden;
@@ -138,7 +140,7 @@ export default {
           width: 100%;
           height: 100%;
           transition: all 0.6s;
-          object-fit:contain;
+          object-fit: cover;
           &:hover {
             cursor: pointer;
             -webkit-transform: scale(1.1);

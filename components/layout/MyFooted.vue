@@ -68,7 +68,7 @@ export default {
   text-align: center;
   background: #232323;
   color: #fff;
-  margin-top: 200px;
+  // margin-top: 200px;
 }
 .blog-footed {
   /*时间跳动*/

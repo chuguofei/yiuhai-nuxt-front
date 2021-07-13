@@ -21,6 +21,10 @@ export default {
         ]
     },
 
+    env: {
+        baseUrl: 'http://127.0.0.1:7779/'
+    },
+
     router: {
         scrollBehavior: function(to, from, savedPosition) {
             return { x: 0, y: 0 }
@@ -53,13 +57,10 @@ export default {
     modules: [
         '@nuxtjs/axios',
     ],
-    axios: {
-        prefix: '/api/',
-        proxy: true, // 开启跨域行为
-    },
+
     proxy: { // 代理
-        '/api/': {
-            target: 'http://localhost:6666', //代理转发地址
+        '/d/': {
+            target: 'http://127.0.0.1:7779/', //代理转发地址
             changeOrigin: true,
             pathRewrite: {
                 '^/api': ''
