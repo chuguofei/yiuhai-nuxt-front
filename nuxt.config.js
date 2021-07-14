@@ -26,7 +26,7 @@ export default {
     },
 
     router: {
-        scrollBehavior: function (to, from, savedPosition) {
+        scrollBehavior: function(to, from, savedPosition) {
             return { x: 0, y: 0 }
         }
     },
@@ -41,7 +41,7 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         '@/plugins/antd-ui',
-        { src: '~plugins/vue-lazy-load', ssr: false }
+        { src: '~plugins/vue-lazy-load', ssr: false }, { src: '~plugins/clipboard', ssr: false }
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

@@ -88,21 +88,6 @@ export default {
       type: Array,
       default: () => [],
     },
-    // 文章数量
-    // articleCount: {
-    //   type: Number,
-    //   default: 0,
-    // },
-    // 分类数据
-    // categoryCount: {
-    //   type: Number,
-    //   default: 0,
-    // },
-    // 分类数据
-    // tagsCount: {
-    //   type: Number,
-    //   default: 0,
-    // },
   },
   data() {
     return {
@@ -288,5 +273,16 @@ export default {
 // 广告
 .advertising {
   text-align: center;
+}
+
+// @media screen and (min-width: 1200px) {
+//   .right-body {
+//     display: block;
+//   }
+// }
+@media screen and (max-width: 1200px) {
+  .right-body {
+    display: none;
+  }
 }
 </style>

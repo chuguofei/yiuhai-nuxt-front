@@ -1,7 +1,7 @@
 <template>
   <div class="about-me-view fade-in">
     <div class="left-body">
-      <div v-for="(item, index) in aboutMeData" class="enter-y">
+      <div v-for="(item, index) in aboutMeData" :key="index" class="enter-y">
         <h3 class="skills-title">
           <i :class="item.icon"></i>
           {{ item.title }}
@@ -41,10 +41,12 @@ export default {
                   label: "爱好：写Bug，找Bug，修复Bug",
                 },
                 {
-                  label: `Blog：<a href='www.guofeian.cn' target="_blank">www.guofeian.cn</a>`,
+                  label: `Blog：`,
+                  href: "www.guofeian.cn",
                 },
                 {
-                  label: `Github：<a href='www.github.com/chuguofei' target="_blank">www.github.com/chuguofei</a>`,
+                  label: `Github：`,
+                  href: "www.github.com/chuguofei",
                 },
                 {
                   label: "QQ：1633295931",

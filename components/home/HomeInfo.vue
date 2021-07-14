@@ -55,6 +55,12 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted() {},
+};
+</script>
+
 
 <script>
 import infoWrapper from "./HomeWrapper.vue";
@@ -91,7 +97,7 @@ export default {
     transition: all 1s ease-in-out;
     .essay-item {
       float: left;
-      margin:0 10px 10px 10px;
+      margin: 0 10px 10px 10px;
       border-radius: 5px;
       padding: 5px;
       box-shadow: 0px 0px 5px #ccc;
@@ -113,7 +119,7 @@ export default {
           width: 100%;
           height: 100%;
           transition: all 0.6s;
-          object-fit: contain;
+          object-fit: fill;
           &:hover {
             cursor: pointer;
             -webkit-transform: scale(1.1);
@@ -213,7 +219,7 @@ export default {
   }
 }
 
-$essayBorderColor: #33d9b2;
+$essayBorderColor: #409eff;
 /** 鼠标移到盒子上的边框效果 */
 .home-body-box .essay-item {
   border: 0;

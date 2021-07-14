@@ -1,6 +1,7 @@
 #content {
     .hljs {
-        padding-top: 10px !important;
+        padding: 5px;
+        border-radius: 5px;
         position: relative;
         .pre-common {
             position: absolute;
@@ -9,6 +10,9 @@
             .copy-code {
                 cursor: pointer;
                 // color: #ccc !important;
+                .fa-clone {
+                    // color: red;
+                }
             }
         }
     }

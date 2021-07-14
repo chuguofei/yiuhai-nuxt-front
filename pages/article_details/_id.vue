@@ -16,7 +16,9 @@
               </div>
               <div class="sentiment">
                 <i class="fa fa-eye" aria-hidden="true"></i>
-                <span class="font-15">{{articleDetailComp.article_sentiment}}</span>
+                <span class="font-15">{{
+                  articleDetailComp.article_sentiment
+                }}</span>
               </div>
               <!-- <div class="love">
                 <i class="fa fa-heart font-15"></i>
@@ -53,8 +55,8 @@
 <script>
 import marked from "marked";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
-import ClipboardJS from "clipboard";
+// import "highlight.js/styles/atom-one-dark-reasonable.css";
+import "highlight.js/styles/an-old-hope.css";
 import AnchorLink from "@/components/aricle_detaile_anchor/index.vue";
 let renderMD = new marked.Renderer();
 marked.setOptions({
@@ -78,7 +80,7 @@ export default {
   },
   async fetch({ $axios, store, params, query }) {
     let result = await $axios.get(`/b/d/${params.id}`);
-    store.commit('article_details/SET_ARTICLE_ITEM', result.data.data)
+    store.commit("article_details/SET_ARTICLE_ITEM", result.data.data);
     // await store.dispatch("getArticleDetails", { id: params.id });
   },
   computed: {
@@ -96,6 +98,11 @@ export default {
       };
       return marked(mdStr).replace(/<pre>/g, "<pre class='hljs'>");
     },
+  },
+  mounted() {
+    if (process.client) {
+      this.preCopy();
+    }
   },
   methods: {
     add(text, level) {
@@ -133,6 +140,48 @@ export default {
         }
       }
       return anchor;
+    },
+    preCopy() {
+      let content = document.getElementById("content");
+      let pre = content.querySelectorAll("pre");
+      for (let i = 0; i < pre.length; i++) {
+        //这里应为是script引入的，所以直接调用hljs就行
+        //代码块高亮
+        hljs.highlightBlock(pre[i].querySelector("code"));
+        //对代码块加行数
+        // hljs.lineNumbersBlock(pre[i].querySelector("code"));
+        // 获取code去除标签，保留code里的内容 复制的时候用到
+        let median = pre[i]
+          .querySelector("code")
+          .innerHTML.replace(/<\/?.+?>/g, "");
+        let res = median.replace(/ /g, "");
+        //添加3个html标签，分别是复制按钮，放大按钮，和一个textarea存放code里的内容
+        let a = `<a class="copy-code"><i class="fa fa-clone" aria-hidden="true"></i></a>`;
+        let b = `<a class="enlarge"><i class="iconfont icon-fangda"></a>`;
+        let banquan =
+          "————————————————\n" +
+          " 版权声明：本文为「GF.Blog」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。\n" +
+          "原文链接：" +
+          window.location.href;
+        let _copy_text = `${res}\n${banquan}`;
+        let common = `<div class="pre-common">${a}${b}</div>`;
+        //追加标签
+        // pre[i].querySelector("code").insertAdjacentHTML("afterend", a);
+        // pre[i].querySelector("code").insertAdjacentHTML("afterend", b);
+        pre[i].querySelector("code").insertAdjacentHTML("afterend", common);
+        // 给放大按钮添加点击事件
+        pre[i].querySelector(".copy-code").onclick = () => {
+          this.$copyText(_copy_text);
+          this.$message.success("复制成功");
+        };
+        pre[i].querySelector(".enlarge").onclick = () => {
+          if (pre[i].classList.contains("code-block-fullscreen")) {
+            pre[i].classList.remove("code-block-fullscreen");
+          } else {
+            pre[i].classList.add("code-block-fullscreen");
+          }
+        };
+      }
     },
   },
 };

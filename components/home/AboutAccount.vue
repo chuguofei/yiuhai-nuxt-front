@@ -1,12 +1,21 @@
 <template>
   <div class="about-account-view">
     <div class="flex justify-center margin-tb-15">
-      <a-popover placement="top" v-for="item in aboutAcountData" :key="item.title">
+      <a-popover
+        placement="top"
+        v-for="item in aboutAcountData"
+        :key="item.title"
+      >
         <template slot="content">
           <span v-if="item.type == 'text'"
             ><a :href="item.href">{{ item.href }}</a></span
           >
-          <img v-if="item.type == 'img'" width="150" height="150" :src="item.href" />
+          <img
+            v-if="item.type == 'img'"
+            width="150"
+            height="150"
+            :src="item.href"
+          />
         </template>
         <template slot="title">
           <span class="font-bold" v-text="item.title"></span>
@@ -28,15 +37,13 @@ export default {
           type: "img",
           title: "QQ",
           icon: "fa fa-qq",
-          href:
-            "https://gf-oss.oss-cn-beijing.aliyuncs.com/common/28da48280caf75f58c54fbc00af67b9.jpg",
+          href: "https://gf-oss.oss-cn-beijing.aliyuncs.com/common/28da48280caf75f58c54fbc00af67b9.jpg",
         },
         {
           type: "img",
           title: "wechat",
           icon: "fa fa-weixin",
-          href:
-            "https://gf-oss.oss-cn-beijing.aliyuncs.com/common/47549ff790c16faf7b869d663e9d28a.jpg",
+          href: "https://gf-oss.oss-cn-beijing.aliyuncs.com/common/47549ff790c16faf7b869d663e9d28a.jpg",
         },
         {
           type: "text",

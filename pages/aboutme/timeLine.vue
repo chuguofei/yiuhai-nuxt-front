@@ -3,9 +3,15 @@
     <h4 v-text="firstTitle"></h4>
     <ul class="time-line">
       <li v-for="(item, index) in infoList" :key="index">
-        <div class="title" v-html="item.label"></div>
+        <div class="title">
+          <span v-text="item.label"></span>
+          <a v-if="item.href" :href="`http://${item.href}`" target="_blank">{{ item.href }}</a>
+        </div>
         <template v-if="item.infoData">
-          <span :key="_index" v-for="(_p, _index) in item.infoData" class="block font-12"
+          <span
+            :key="_index"
+            v-for="(_p, _index) in item.infoData"
+            class="block font-12"
             ><i v-text="_p"></i
           ></span>
         </template>
@@ -24,6 +30,11 @@ export default {
     infoList: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    toLink(href) {
+      window.location.href = href;
     },
   },
 };
