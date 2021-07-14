@@ -2,11 +2,11 @@ import service from '../api'
 
 
 export const actions = {
-    // nuxtServerInit(store, { params, route, req }) {
-
-
-    //     return Promise.all()
-    // },
+    async nuxtServerInit({ commit } ,{ app }) {
+        // 获取侧边栏信息
+        let result = await  app.$axios.get(`/b/homeInfo`);
+        commit('home_info/SET_ARTICLE_HOME_INFO_DATA', result.data.data)
+    },
     // 获取文章列表
     async getArticlHomeDataApi({ commit, state }, params) {
         const res = await service.getArticleList().catch(err => {

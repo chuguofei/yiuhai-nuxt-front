@@ -64,10 +64,13 @@ export default {
 
 <style lang="scss">
 .blog-footed-box {
+  width: 100%;
   padding: 10px;
   text-align: center;
   background: #232323;
   color: #fff;
+  // position: absolute;
+  // bottom: 0;
   // margin-top: 200px;
 }
 .blog-footed {

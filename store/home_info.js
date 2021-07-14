@@ -1,7 +1,7 @@
 export const state = () => ({
 
     // 文章的详情
-    articleList: [],
+    articleCount:0,
     categoryList: [],
     tagsList: [],
 
@@ -10,8 +10,8 @@ export const state = () => ({
 
 export const mutations = {
     // 文章列表
-    SET_ARTICLE_HOME_DATA(state, data) {
-        state.articleList = data.articleList;
+    SET_ARTICLE_HOME_INFO_DATA(state, data) {
+        state.articleCount = data.articleCount;
         state.categoryList = data.categoryList;
         state.tagsList = data.tagsList;
     },

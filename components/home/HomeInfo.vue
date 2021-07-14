@@ -51,13 +51,7 @@
         </div>
       </div>
     </div>
-    <info-wrapper
-      :rightCategoryArr="categoryList"
-      :rightTagArr="tagsList"
-      :articleCount="articleList.length"
-      :categoryCount="categoryList.length"
-      :tagsCount="tagsList.length"
-    ></info-wrapper>
+    <info-wrapper></info-wrapper>
   </div>
 </template>
 
@@ -71,28 +65,6 @@ export default {
       type: Array,
       default: () => [],
     },
-    categoryList: {
-      type: Array,
-      default: () => [],
-    },
-    tagsList: {
-      type: Array,
-      default: () => [],
-    },
-  },
-  data() {
-    return {
-      // articleList: [
-      //   {
-      //     id: 100,
-      //     title: "GF.Blog 启动",
-      //     createTime: "2021年6月23日",
-      //     abstract:
-      //       "GF.Blog启动,前端采用 vue3.0 + Ts + Vite,后端采用 Spring Boot + MyBatis + Redis + Dubbo + Zookeeper,部署容器采用 Nginx + Node + SSR + Pm2 等技术 ",
-      //     tags: ["技术", "文章", "SSR", "全栈"],
-      //   },
-      // ],
-    };
   },
   methods: {
     toAircleDetailsMeth(id) {
@@ -110,6 +82,7 @@ export default {
   width: 80%;
   margin: 0 auto;
   background: #fff;
+  padding-top: 10px;
 
   .left-body {
     width: 80%;
@@ -118,7 +91,7 @@ export default {
     transition: all 1s ease-in-out;
     .essay-item {
       float: left;
-      margin: 10px;
+      margin:0 10px 10px 10px;
       border-radius: 5px;
       padding: 5px;
       box-shadow: 0px 0px 5px #ccc;
@@ -140,7 +113,7 @@ export default {
           width: 100%;
           height: 100%;
           transition: all 0.6s;
-          object-fit: cover;
+          object-fit: contain;
           &:hover {
             cursor: pointer;
             -webkit-transform: scale(1.1);

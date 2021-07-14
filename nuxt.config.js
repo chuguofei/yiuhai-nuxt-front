@@ -22,7 +22,7 @@ export default {
     },
 
     env: {
-        baseUrl: 'http://127.0.0.1:7779/'
+        baseUrl: ''
     },
 
     router: {
@@ -62,7 +62,6 @@ export default {
         proxy: true,
         prefix: '/api/',
         credentials: true
-        // See https://github.com/nuxt-community/axios-module#options
     },
     proxy: { // 代理
         '/api/': {

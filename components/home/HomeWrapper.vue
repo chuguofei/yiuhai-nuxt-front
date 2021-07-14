@@ -13,11 +13,11 @@
             <h6>文章</h6>
           </div>
           <div class="flex flex-direction align-center justify-center">
-            <h3 v-text="categoryCount"></h3>
+            <h3 v-text="categoryList.length"></h3>
             <h6>分类</h6>
           </div>
           <div class="flex flex-direction align-center justify-center">
-            <h3 v-text="tagsCount"></h3>
+            <h3 v-text="tagsList.length"></h3>
             <h6>标签</h6>
           </div>
         </div>
@@ -32,7 +32,7 @@
         </div>
         <ul
           class="category-list enter-y"
-          v-for="(item, index) in rightCategoryArr"
+          v-for="(item, index) in categoryList"
           :key="index"
         >
           <li class="category-item">
@@ -56,7 +56,7 @@
         <div class="margin-top-5 flex flex-wrap">
           <span class="t-e enter-y" :style="tagStyleComp()">全部</span>
           <span
-            v-for="(item, index) in rightTagArr"
+            v-for="(item, index) in tagsList"
             :key="index"
             class="t-e enter-y"
             :style="tagStyleComp()"
@@ -89,20 +89,20 @@ export default {
       default: () => [],
     },
     // 文章数量
-    articleCount: {
-      type: Number,
-      default: 0,
-    },
+    // articleCount: {
+    //   type: Number,
+    //   default: 0,
+    // },
     // 分类数据
-    categoryCount: {
-      type: Number,
-      default: 0,
-    },
+    // categoryCount: {
+    //   type: Number,
+    //   default: 0,
+    // },
     // 分类数据
-    tagsCount: {
-      type: Number,
-      default: 0,
-    },
+    // tagsCount: {
+    //   type: Number,
+    //   default: 0,
+    // },
   },
   data() {
     return {
@@ -122,6 +122,19 @@ export default {
         return { border: `1px ${rgb} solid !important`, color: rgb };
       };
     },
+    articleCount() {
+      return this.$store.state.home_info.articleCount;
+    },
+    categoryList() {
+      let rightCategoryArr = this.$store.state.home_info.categoryList;
+      rightCategoryArr.forEach(() => {
+        this.rightCategoryColosArr.push(getRandomColor());
+      });
+      return rightCategoryArr;
+    },
+    tagsList() {
+      return this.$store.state.home_info.tagsList;
+    },
   },
 };
 </script>
@@ -129,7 +142,7 @@ export default {
 
 <style lang="scss">
 .right-body {
-  margin-top: 10px;
+  width: 20%;
   height: auto;
   .blog-info-container {
     box-shadow: 0 0 5px #ccc;
