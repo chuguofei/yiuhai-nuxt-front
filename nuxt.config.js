@@ -26,7 +26,7 @@ export default {
     },
 
     router: {
-        scrollBehavior: function(to, from, savedPosition) {
+        scrollBehavior: function (to, from, savedPosition) {
             return { x: 0, y: 0 }
         }
     },
@@ -58,12 +58,19 @@ export default {
         '@nuxtjs/axios',
     ],
 
+    axios: {
+        proxy: true,
+        prefix: '/api/',
+        credentials: true
+        // See https://github.com/nuxt-community/axios-module#options
+    },
     proxy: { // 代理
-        '/d/': {
+        '/api/': {
             target: 'http://127.0.0.1:7779/', //代理转发地址
             changeOrigin: true,
             pathRewrite: {
-                '^/api': ''
+                '^/api/': '/',
+                changeOrigin: true
             }
         }
     },

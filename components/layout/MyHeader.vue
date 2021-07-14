@@ -9,7 +9,8 @@
             :key="index"
             @click="menuItemClick(item.path)"
             v-text="item.title"
-          ></li>
+          >
+          </li>
         </ul>
       </div>
 

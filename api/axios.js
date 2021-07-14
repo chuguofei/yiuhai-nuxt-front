@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = process.env.baseUrl;
+// axios.defaults.baseURL = process.env.baseUrl;
+axios.defaults.baseURL = "/api/";
 
 // 公共请求参数
 const commonParam = {
@@ -11,7 +12,6 @@ const commonParam = {
 // 拦截请求
 axios.interceptors.request.use(
     req => {
-        console.log(req)
         return req
     },
     err => {

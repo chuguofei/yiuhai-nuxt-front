@@ -76,8 +76,10 @@ export default {
       tocItems: [],
     };
   },
-  async fetch({ store, params, query }) {
-    await store.dispatch("getArticleDetails", { id: params.id });
+  async fetch({ $axios, store, params, query }) {
+    let result = await $axios.get(`/b/d/${params.id}`);
+    store.commit('article_details/SET_ARTICLE_ITEM', result.data.data)
+    // await store.dispatch("getArticleDetails", { id: params.id });
   },
   computed: {
     articleDetailComp() {

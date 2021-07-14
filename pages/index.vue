@@ -26,8 +26,10 @@ export default Vue.extend({
   //   ]);
   //   return { homeData };
   // },
-  async fetch() {
-    await this.$store.dispatch("getArticlHomeDataApi");
+  async fetch({ $axios, store, params }) {
+    let result = await $axios.get("/b/h/1");
+    store.commit('article_list/SET_ARTICLE_HOME_DATA', result.data.data)
+    // await store.dispatch("getArticlHomeDataApi");
   },
   computed: {
     articleList() {
