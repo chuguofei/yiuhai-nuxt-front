@@ -1,4 +1,10 @@
-import {get } from "./axios";
+import { get } from "./axios";
+
+
+// 侧边栏数据
+export function getHomeInfoWrapperApi() {
+    return get(`/b/homeInfo`).then(res => res.data)
+}
 
 // 获取首页文章列表
 export function getArticleList() {

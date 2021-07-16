@@ -43,7 +43,7 @@
 .enter-y {
     transform: translateY(50px);
     opacity: 0;
-    animation: enter-y-animation 0.4s ease-in-out 0.5s;
+    animation: enter-y-animation 0.3s ease-in-out 0.5s;
     animation-fill-mode: forwards;
     @for $i from 1 to 50 {
         &:nth-child(#{$i}) {

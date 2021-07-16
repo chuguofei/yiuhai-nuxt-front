@@ -175,10 +175,13 @@ export default {
     }
 
     .statistical {
+      width: 100%;
       border-bottom: 1px solid #ccc;
-
+      display: flex;
+      justify-content:space-evenly;
       & > div {
-        padding: 0 25px;
+        width: 50px;
+        // padding: 0 20px;
         position: relative;
         &:not(:last-child) {
           &:after {
@@ -280,7 +283,7 @@ export default {
 //     display: block;
 //   }
 // }
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1000px) {
   .right-body {
     display: none;
   }

@@ -13,6 +13,7 @@ export default {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+            { href: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css",rel: "stylesheet" }
         ],
         script: [
             { src: "https://libs.baidu.com/jquery/2.1.1/jquery.min.js" },
@@ -26,7 +27,7 @@ export default {
     },
 
     router: {
-        scrollBehavior: function(to, from, savedPosition) {
+        scrollBehavior: function (to, from, savedPosition) {
             return { x: 0, y: 0 }
         }
     },
@@ -41,7 +42,9 @@ export default {
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
         '@/plugins/antd-ui',
-        { src: '~plugins/vue-lazy-load', ssr: false }, { src: '~plugins/clipboard', ssr: false }
+        '~/plugins/axios',
+        { src: '~plugins/vue-lazy-load', ssr: false },
+        { src: '~plugins/clipboard', ssr: false }
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

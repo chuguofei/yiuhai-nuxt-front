@@ -15,6 +15,7 @@ axios.interceptors.request.use(
         return req
     },
     err => {
+        console.log("错误了")
         return err
     }
 )
@@ -25,6 +26,7 @@ axios.interceptors.response.use(
         return res.data;
     },
     err => {
+        console.log("错误了")
         return err
     }
 )

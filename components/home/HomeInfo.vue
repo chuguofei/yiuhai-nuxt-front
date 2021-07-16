@@ -1,71 +1,65 @@
 <template>
   <div class="home-body-box flex">
     <div class="left-body">
-      <div
-        v-for="item in articleList"
-        :key="item.id"
-        class="essay-item enter-y"
-      >
-        <nuxt-link :to="`/article_details/${item.id}`">
-          <div class="eassay-preview-img-box">
-            <img v-lazy="item.article_img" class="eassay-preview-img" />
-          </div>
-        </nuxt-link>
-        <!-- 文章标题 -->
-        <div class="eassay-title text-center">{{ item.article_title }}</div>
-        <!-- 工具 -->
-        <div class="eassay-common flex">
-          <div class="create-time">
-            <i class="fa fa-calendar margin-right-5 font-10"></i>
-            <span class="font-10">{{ item.create_time }}</span>
-          </div>
-          <div class="love">
-            <i class="fa fa-eye font-10" aria-hidden="true"></i>
-            <span class="font-10">{{ item.article_sentiment }}</span>
-          </div>
-          <!-- <div class="love">
-            <i class="fa fa-heart margin-right-5 font-10"></i>
-            <span class="font-10">9999</span>
-          </div>
-          <div class="collection">
-            <i class="fa fa-star margin-right-5 font-10"></i>
-            <span class="font-10">9999</span>
-          </div> -->
-        </div>
-        <!-- 文章解释 -->
-        <div class="eassay-explain">{{ item.article_content }}</div>
-        <!-- 文章标签 -->
-        <div class="eassay-tag flew flex-warp">
-          <span
-            class="tag-item chip"
-            :key="_item"
-            v-for="_item in item.article_tags.split(',')"
-            >{{ _item }}</span
-          >
-        </div>
-        <!-- 文章详情 -->
-        <div class="text-right">
+      <div class="aritle-list">
+        <div v-for="item in articleList" :key="item.id" class="essay-item enter-y">
           <nuxt-link :to="`/article_details/${item.id}`">
-            <button class="to-details-btn">详情</button>
+            <div class="eassay-preview-img-box">
+              <img v-lazy="item.article_img" class="eassay-preview-img" />
+            </div>
           </nuxt-link>
+          <!-- 文章标题 -->
+          <div class="eassay-title text-center">{{ item.article_title }}</div>
+          <!-- 工具 -->
+          <div class="eassay-common flex">
+            <div class="create-time">
+              <i class="fa fa-calendar margin-right-5 font-10"></i>
+              <span class="font-10">{{ item.create_time }}</span>
+            </div>
+            <div class="love">
+              <i class="fa fa-eye font-10" aria-hidden="true"></i>
+              <span class="font-10">{{ item.article_sentiment }}</span>
+            </div>
+            <!-- <div class="love">
+              <i class="fa fa-heart margin-right-5 font-10"></i>
+              <span class="font-10">9999</span>
+            </div>
+            <div class="collection">
+              <i class="fa fa-star margin-right-5 font-10"></i>
+              <span class="font-10">9999</span>
+            </div> -->
+          </div>
+          <!-- 文章解释 -->
+          <div class="eassay-explain">{{ item.article_content }}</div>
+          <!-- 文章标签 -->
+          <div class="eassay-tag flew flex-warp">
+            <span
+              class="tag-item chip"
+              :key="_item"
+              v-for="_item in item.article_tags.split(',')"
+              >{{ _item }}</span
+            >
+          </div>
+          <!-- 文章详情 -->
+          <div class="text-right">
+            <nuxt-link :to="`/article_details/${item.id}`">
+              <button class="to-details-btn">详情</button>
+            </nuxt-link>
+          </div>
         </div>
       </div>
+      <a-button class="width--97 margin-left-10 fade-in enter-y" type="primary" block> 点击加载更多 </a-button>
+      <no-data class="enter-y"></no-data>
     </div>
     <info-wrapper></info-wrapper>
   </div>
 </template>
 
 <script>
-export default {
-  mounted() {},
-};
-</script>
-
-
-<script>
 import infoWrapper from "./HomeWrapper.vue";
+import NoData from '../common/NoData.vue'
 export default {
-  components: { infoWrapper },
+  components: { infoWrapper ,NoData },
   props: {
     articleList: {
       type: Array,
@@ -77,11 +71,10 @@ export default {
       this.$router.push({
         path: `/article_details/${id}`,
       });
-    },
+    }
   },
 };
 </script>
-
 
 <style scoped lang="scss">
 .home-body-box {
@@ -92,7 +85,8 @@ export default {
 
   .left-body {
     width: 80%;
-    // display: flex;
+    display: flex;
+    flex-direction: column;
     // flex-wrap: wrap;
     transition: all 1s ease-in-out;
     .essay-item {
@@ -293,9 +287,6 @@ $essayBorderColor: #409eff;
         }
       }
     }
-    .right-body {
-      display: block;
-    }
   }
 }
 @media screen and (max-width: 1400px) and (min-width: 1200px) {
@@ -310,9 +301,6 @@ $essayBorderColor: #409eff;
           height: 200px;
         }
       }
-    }
-    .right-body {
-      display: block;
     }
   }
 }
@@ -330,9 +318,6 @@ $essayBorderColor: #409eff;
         }
       }
     }
-    .right-body {
-      display: none;
-    }
   }
 }
 @media screen and (max-width: 1000px) and (min-width: 800px) {
@@ -348,9 +333,6 @@ $essayBorderColor: #409eff;
         }
       }
     }
-    .right-body {
-      display: none;
-    }
   }
 }
 @media screen and (max-width: 800px) {
@@ -359,15 +341,16 @@ $essayBorderColor: #409eff;
     margin: 0 20px;
     .left-body {
       width: 100%;
-      .essay-item {
-        width: 100%;
-        .eassay-preview-img-box {
-          height: 300px;
+      .aritle-list{
+        width:calc(100% - 20px);
+        .essay-item {
+          margin:10px;
+          width: 100%;
+          .eassay-preview-img-box {
+            height: 300px;
+          }
         }
       }
-    }
-    .right-body {
-      display: none;
     }
   }
 }
