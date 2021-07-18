@@ -1,19 +1,22 @@
 export default {
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'yiuhai-nuxt-front',
+        title: '欢迎访问我的博客 - GF.Blog',
         htmlAttrs: {
             lang: 'en'
         },
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-            { hid: 'description', name: 'description', content: '' },
-            { name: 'format-detection', content: 'telephone=no' }
+            { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no' },
+            { hid: 'description', name: 'description', content: 'GF.Blog ，全栈学习，全栈开发' },
+            { hid: 'keywords', name: 'keywords', content: 'GF.brand，Java ，Spring ，Spring Boot ，Spring Cloud， GoLang ，vue，nuxt，blog ，JavaScript，TypeScript，ts ，js，css，html，flutter ，uniapp，web前端，前端开发，后端，全栈开发，个人博客' },
+            { hid: 'author', name: 'author', content: 'GF' },
+            { hid: 'renderer', name: 'renderer', content: 'webkit|ie-comp|ie-stand' },
+            { hid: 'http-equiv', 'http-equiv': 'X-UA-Compatible', content: 'IE=edge,chrome=1' },
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-            { href: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css",rel: "stylesheet" }
+            { href: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css", rel: "stylesheet" }
         ],
         script: [
             { src: "https://libs.baidu.com/jquery/2.1.1/jquery.min.js" },
@@ -22,12 +25,8 @@ export default {
         ]
     },
 
-    env: {
-        baseUrl: ''
-    },
-
     router: {
-        scrollBehavior: function (to, from, savedPosition) {
+        scrollBehavior: function(to, from, savedPosition) {
             return { x: 0, y: 0 }
         }
     },
@@ -80,7 +79,7 @@ export default {
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
-        analyze: false,
+        analyze: true,
         optimizeCSS: true,
         extractCSS: true,
     }

@@ -2,7 +2,7 @@
   <div class="home-body-box flex">
     <div class="left-body">
       <div class="aritle-list">
-        <div v-for="item in articleList" :key="item.id" data-wow-delay="0.1s" data-wow-offset="5" class="essay-item enter-x wow">
+        <div v-for="item in articleList" :key="item.id" data-wow-delay="0.1s" data-wow-offset="5" class="essay-item animated fadeIn wow">
           <nuxt-link :to="`/article_details/${item.id}`">
             <div class="eassay-preview-img-box">
               <img v-lazy="item.article_img" class="eassay-preview-img" />
@@ -71,7 +71,9 @@ export default Vue.extend({
   async fetch({ $axios, store, query , params }) {
     const page = query.page ? Number(query.page) : 1;
     let result = await $axios.get(`/b/h`);
-    store.commit("article_list/SET_ARTICLE_HOME_DATA", result.data.data);
+    if(result){
+      store.commit("article_list/SET_ARTICLE_HOME_DATA", result.data);
+    }
     // await store.dispatch("getArticlHomeDataApi");
   },
   data() {
@@ -253,6 +255,7 @@ $essayBorderColor: #409eff;
 .home-body-box .essay-item {
   border: 0;
   box-sizing: border-box;
+  transform: translateX(0);
 
   &::before,
   &::after {

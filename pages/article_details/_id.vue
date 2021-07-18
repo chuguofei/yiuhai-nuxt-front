@@ -1,26 +1,32 @@
 <template>
   <div class="aircle-details-view">
-    <a-skeleton active v-if="!articleDetailComp" />
-    <template v-else>
-      <a-row>
-        <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
-          <div class="article-container">
-            <div class="article-title font-23 text-center margin-top-10">
-              {{ articleDetailComp.article_title }}
-            </div>
-            <!-- 工具 -->
-            <div class="article-common flex justify-center">
-              <div class="create-time">
-                <i class="fa fa-calendar font-15"></i>
-                <span class="font-15">{{ articleDetailComp.create_time }}</span>
+    <div v-if="articleDetailStatus != 200">
+        非法访问呢
+    </div>
+    <div v-else>
+      <a-skeleton active v-if="!articleDetailComp" />
+      <template v-else>
+        <a-row>
+          <a-col :xs="24" :sm="24" :md="24" :lg="18" :xl="18">
+            <div class="article-container">
+              <div class="article-title font-23 text-center margin-top-10">
+                {{ articleDetailComp.article_title }}
               </div>
-              <div class="sentiment">
-                <i class="fa fa-eye" aria-hidden="true"></i>
-                <span class="font-15">{{
-                  articleDetailComp.article_sentiment
-                }}</span>
-              </div>
-              <!-- <div class="love">
+              <!-- 工具 -->
+              <div class="article-common flex justify-center">
+                <div class="create-time">
+                  <i class="fa fa-calendar font-15"></i>
+                  <span class="font-15">{{
+                    articleDetailComp.create_time
+                  }}</span>
+                </div>
+                <div class="sentiment">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                  <span class="font-15">{{
+                    articleDetailComp.article_sentiment
+                  }}</span>
+                </div>
+                <!-- <div class="love">
                 <i class="fa fa-heart font-15"></i>
                 <span class="font-15">9999</span>
               </div>
@@ -28,27 +34,28 @@
                 <i class="fa fa-star font-15"></i>
                 <span class="font-15">9999</span>
               </div> -->
+              </div>
+              <div class="article-details" id="content">
+                <div v-html="mkContentComp"></div>
+              </div>
             </div>
-            <div class="article-details" id="content">
-              <div v-html="mkContentComp"></div>
+          </a-col>
+          <a-col :xs="0" :sm="0" :md="0" :lg="6" :xl="6">
+            <div class="article-anchor margin-left-10">
+              <a-anchor
+                affix
+                :showInkInFixed="true"
+                :offsetTop="60"
+                v-if="tocItems.length > 0"
+              >
+                <AnchorLink :list="tocItems" />
+              </a-anchor>
+              <a-skeleton active v-else />
             </div>
-          </div>
-        </a-col>
-        <a-col :xs="0" :sm="0" :md="0" :lg="6" :xl="6">
-          <div class="article-anchor margin-left-10">
-            <a-anchor
-              affix
-              :showInkInFixed="true"
-              :offsetTop="60"
-              v-if="tocItems.length > 0"
-            >
-              <AnchorLink :list="tocItems" />
-            </a-anchor>
-            <a-skeleton active v-else />
-          </div>
-        </a-col>
-      </a-row>
-    </template>
+          </a-col>
+        </a-row>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -76,14 +83,27 @@ export default {
       index: 0,
       anchors: [],
       tocItems: [],
+      // =======================>>>
+      noId: false,
+    };
+  },
+  head() {
+    return {
+      title:
+        "GF." +  this.articleDetailComp?.article_title == undefined ? "加载中..." : this.articleDetailComp?.article_title,
     };
   },
   async fetch({ $axios, store, params, query }) {
     let result = await $axios.get(`/b/d/${params.id}`);
-    store.commit("article_details/SET_ARTICLE_ITEM", result.data.data);
-    // await store.dispatch("getArticleDetails", { id: params.id });
+    if (result) {
+      store.commit("article_details/SET_ARTICLE_STATUS", result.code);
+      store.commit("article_details/SET_ARTICLE_ITEM", result.data);
+    }
   },
   computed: {
+    articleDetailStatus() {
+      return this.$store.state.article_details.status;
+    },
     articleDetailComp() {
       return this.$store.state.article_details.articleItem;
     },
@@ -100,9 +120,7 @@ export default {
     },
   },
   mounted() {
-    if (process.client) {
-      this.preCopy();
-    }
+    this.preCopy();
   },
   methods: {
     add(text, level) {
@@ -142,6 +160,9 @@ export default {
       return anchor;
     },
     preCopy() {
+      if (this.articleDetailComp == null) {
+        return;
+      }
       let content = document.getElementById("content");
       let pre = content.querySelectorAll("pre");
       for (let i = 0; i < pre.length; i++) {

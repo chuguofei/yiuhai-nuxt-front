@@ -1,9 +1,16 @@
 <template>
-  <div class="frient-view-box">
-    123
-  </div>
+  <div class="frient-view-box">123</div>
 </template>
 
+<script>
+export default {
+  head() {
+    return {
+      title: "GF.友链",
+    };
+  },
+};
+</script>
 
 <style scoped lang="scss">
 .frient-view-box {

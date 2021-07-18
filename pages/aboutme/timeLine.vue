@@ -1,17 +1,18 @@
 <template>
   <div>
-    <h4 v-text="firstTitle"></h4>
     <ul class="time-line">
       <li v-for="(item, index) in infoList" :key="index">
         <div class="title">
           <span v-text="item.label"></span>
-          <a v-if="item.href" :href="`http://${item.href}`" target="_blank">{{ item.href }}</a>
+          <a v-if="item.href" :href="`http://${item.href}`" target="_blank">{{
+            item.href
+          }}</a>
         </div>
         <template v-if="item.infoData">
           <span
             :key="_index"
             v-for="(_p, _index) in item.infoData"
-            class="block font-12"
+            class="block font-13"
             ><i v-text="_p"></i
           ></span>
         </template>
@@ -23,10 +24,6 @@
 <script>
 export default {
   props: {
-    firstTitle: {
-      type: String,
-      default: "",
-    },
     infoList: {
       type: Array,
       default: () => [],

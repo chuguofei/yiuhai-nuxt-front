@@ -22,10 +22,15 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "GF.快捷导航",
+    };
+  },
   data() {
     return {
       externalLinkArr: [
-        {
+        {d
           name: "BootCDN",
           icon: "https://www.bootcdn.cn/assets/ico/favicon.ico",
           href: "https://www.bootcdn.cn/",

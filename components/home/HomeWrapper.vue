@@ -12,10 +12,12 @@
             <h3 v-text="articleCount"></h3>
             <h6>文章</h6>
           </div>
+          <div class="line"></div>
           <div class="flex flex-direction align-center justify-center">
             <h3 v-text="categoryList.length"></h3>
             <h6>分类</h6>
           </div>
+          <div class="line"></div>
           <div class="flex flex-direction align-center justify-center">
             <h3 v-text="tagsList.length"></h3>
             <h6>标签</h6>
@@ -178,23 +180,28 @@ export default {
       width: 100%;
       border-bottom: 1px solid #ccc;
       display: flex;
-      justify-content:space-evenly;
-      & > div {
-        width: 50px;
-        // padding: 0 20px;
-        position: relative;
-        &:not(:last-child) {
-          &:after {
-            content: "";
-            position: absolute;
-            right: 0;
-            width: 1;
-            top: 20%;
-            height: 60%;
-            border-right: 1px solid #ccc;
-          }
-        }
+      justify-content: space-evenly;
+      .line {
+        width: 1px;
+        border-right:0.1px #ccc solid;
+        margin-bottom: 8px;
       }
+      // & > div {
+      //   width: 50px;
+      //   // padding: 0 20px;
+      //   position: relative;
+      //   &:not(:last-child) {
+      //     &:after {
+      //       content: "";
+      //       position: absolute;
+      //       right: 0;
+      //       width: 1;
+      //       top: 20%;
+      //       height: 60%;
+      //       border-right: 1px solid #ccc;
+      //     }
+      //   }
+      // }
     }
   }
   // 文章分类

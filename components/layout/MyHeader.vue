@@ -2,14 +2,16 @@
   <div class="blog-header-box">
     <div class="menu-container">
       <div class="header-menu-pc">
-        <div class="blog-name">GF.Blog</div>
+        <nuxt-link class="blog-name" :to="{ path: '/' }">GF.Blog</nuxt-link>
         <ul class="menu-list">
           <li
             v-for="(item, index) in menuArr"
             :key="index"
             @click="menuItemClick(item.path)"
-            v-text="item.title"
+            :class="{ active: $route.path == item.path }"
           >
+            <i class="font-17 margin-right-5" :class="item.icon"></i>
+            <span v-text="item.title"></span>
           </li>
         </ul>
       </div>
@@ -47,10 +49,10 @@ export default Vue.extend({
   data() {
     return {
       menuArr: [
-        { title: "首页", path: "/" },
-        { title: "友链", path: "/fl" },
-        { title: "导航", path: "/quicknav" },
-        { title: "关于我", path: "/aboutme" },
+        { title: "博客", path: "/", icon: "fa fa fa-home" },
+        // { title: "友链", path: "/fl" },
+        { title: "快捷导航", path: "/quicknav", icon: "fa fa-leaf" },
+        { title: "关于我", path: "/aboutme", icon: "fa fa-user-o" },
       ],
       mobileMenuBarFlag: false,
     };
@@ -93,8 +95,6 @@ export default Vue.extend({
         padding: 0;
         margin: 0;
         max-width: 80%;
-        height: 50px;
-        // margin: 0 auto;
         animation: animationOpacity 2s;
 
         li {
@@ -102,8 +102,15 @@ export default Vue.extend({
           margin-left: 20px;
           line-height: 50px;
           color: #fff;
-          letter-spacing: 5px;
+          letter-spacing: 2px;
           position: relative;
+          display: flex;
+          align-items: center;
+          vertical-align: middle;
+
+          &.active {
+            border-bottom: 3px #409eff solid;
+          }
 
           &:hover {
             cursor: pointer;
