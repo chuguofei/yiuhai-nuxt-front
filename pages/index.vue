@@ -30,7 +30,7 @@
             </div> -->
           </div>
           <!-- 文章解释 -->
-          <div class="eassay-explain">{{ item.article_content }}</div>
+          <div class="eassay-explain">{{ item.article_explain }}</div>
           <!-- 文章标签 -->
           <div class="eassay-tag flew flex-warp">
             <span

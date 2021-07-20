@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       externalLinkArr: [
-        {d
+        {
           name: "BootCDN",
           icon: "https://www.bootcdn.cn/assets/ico/favicon.ico",
           href: "https://www.bootcdn.cn/",

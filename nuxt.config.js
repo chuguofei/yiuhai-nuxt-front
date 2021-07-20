@@ -62,15 +62,15 @@ export default {
 
     axios: {
         proxy: true,
-        prefix: '/api/',
+        prefix: '/blogapi/',
         credentials: true
     },
     proxy: { // 代理
-        '/api/': {
-            target: 'http://127.0.0.1:7779/', //代理转发地址
+        '/blogapi/': {
+            target: 'http://121.89.241.42:7779/', //代理转发地址
             changeOrigin: true,
             pathRewrite: {
-                '^/api/': '/',
+                '^/blogapi/': '/',
                 changeOrigin: true
             }
         }

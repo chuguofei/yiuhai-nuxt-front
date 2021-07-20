@@ -12,6 +12,7 @@ export default function({ store, redirect, req, router, app: { $axios } }) {
         },
         error => {
             if (process.client) {
+                console.log(error)
                 Message.error("出错啦");
             }
         }
