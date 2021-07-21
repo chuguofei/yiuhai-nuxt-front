@@ -1,6 +1,6 @@
 <template>
   <div class="about-me-view fade-in">
-    <div class="left-body">
+    <div class="left-body app-bg-color margin-right-10">
       <div v-for="(item, index) in aboutMeData" :key="index" class="enter-y">
         <h3 class="skills-title">
           <i :class="item.icon"></i>

@@ -1,15 +1,11 @@
 <template>
-  <div class="quick-nav-view fade-in">
+  <div class="quick-nav-view fade-in app-bg-color">
     <div class="recommend-nav">
       <div class="margin-tb-5 headline">
         <b>推荐导航</b>
       </div>
       <ul>
-        <li
-          :key="index"
-          v-for="(item, index) in externalLinkArr"
-          class="e-link-item"
-        >
+        <li :key="index" v-for="(item, index) in externalLinkArr" class="e-link-item">
           <a target="_blank" :href="item.href">
             <img :src="item.icon" />
             <span class="e-name" v-text="item.name"></span>
@@ -47,12 +43,14 @@ export default {
         },
         {
           name: "掘金",
-          icon: "https://sf3-scmcdn2-tos.pstatp.com/xitu_juejin_web/6bdafd801c878b10edb5fed5d00969e9.svg",
+          icon:
+            "https://sf3-scmcdn2-tos.pstatp.com/xitu_juejin_web/6bdafd801c878b10edb5fed5d00969e9.svg",
           href: "https://juejin.im/",
         },
         {
           name: "语雀",
-          icon: "https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*dbj2Tp-tmVgAAAAAAAAAAABkARQnAQ",
+          icon:
+            "https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*dbj2Tp-tmVgAAAAAAAAAAABkARQnAQ",
           href: "https://www.yuque.com/",
         },
         {

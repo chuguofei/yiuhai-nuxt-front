@@ -1,6 +1,6 @@
 <template>
   <div class="right-body">
-    <div class="blog-info-container enter-x">
+    <div class="blog-info-container app-bg-color enter-x">
       <!-- 头像框框 -->
       <div class="blog-info-wrapper">
         <div class="my-photo">
@@ -74,7 +74,6 @@
   </div>
 </template>
 
-
 <script>
 import { getRandomColor, getRandomRGB } from "@/plugins/common";
 import AdvertisingHomeRight from "@/components/advertising/Home";
@@ -126,11 +125,11 @@ export default {
 };
 </script>
 
-
 <style lang="scss">
 .right-body {
   width: 20%;
   height: auto;
+
   .blog-info-container {
     box-shadow: 0 0 5px #ccc;
   }
@@ -168,12 +167,7 @@ export default {
       user-select: none;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-image: linear-gradient(
-        -225deg,
-        #473b7b 0%,
-        #3584a7 51%,
-        #30d2be 100%
-      );
+      background-image: linear-gradient(-225deg, #473b7b 0%, #3584a7 51%, #30d2be 100%);
     }
 
     .statistical {
@@ -183,7 +177,7 @@ export default {
       justify-content: space-evenly;
       .line {
         width: 1px;
-        border-right:0.1px #ccc solid;
+        border-right: 0.1px #ccc solid;
         margin-bottom: 8px;
       }
       // & > div {

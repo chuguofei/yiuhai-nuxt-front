@@ -1,26 +1,38 @@
 <template>
   <div class="home-body-box flex">
-    <div class="left-body">
-      <div class="aritle-list">
-        <div v-for="item in articleList" :key="item.id" data-wow-delay="0.1s" data-wow-offset="5" class="essay-item animated fadeIn wow">
-          <nuxt-link :to="`/article_details/${item.id}`">
-            <div class="eassay-preview-img-box">
-              <img v-lazy="item.article_img" class="eassay-preview-img" />
-            </div>
-          </nuxt-link>
-          <!-- 文章标题 -->
-          <div class="eassay-title text-center">{{ item.article_title }}</div>
-          <!-- 工具 -->
-          <div class="eassay-common flex">
-            <div class="create-time">
-              <i class="fa fa-calendar margin-right-5 font-10"></i>
-              <span class="font-10">{{ item.create_time }}</span>
-            </div>
-            <div class="love">
-              <i class="fa fa-eye font-10" aria-hidden="true"></i>
-              <span class="font-10">{{ item.article_sentiment }}</span>
-            </div>
-            <!-- <div class="love">
+    <div class="left-body app-bg-color margin-right-10">
+      <a-row class="padding-10" :gutter="16">
+        <a-col
+          v-for="item in articleList"
+          :key="item.id"
+          data-wow-delay="0.1s"
+          data-wow-offset="5"
+          class="margin-tb-5"
+          :xs="24"
+          :sm="12"
+          :md="12"
+          :lg="12"
+          :xl="8"
+        >
+          <div class="essay-item animated fadeIn wow">
+            <nuxt-link :to="`/article_details/${item.id}`">
+              <div class="eassay-preview-img-box">
+                <img v-lazy="item.article_img" class="eassay-preview-img" />
+              </div>
+            </nuxt-link>
+            <!-- 文章标题 -->
+            <div class="eassay-title text-center">{{ item.article_title }}</div>
+            <!-- 工具 -->
+            <div class="eassay-common flex">
+              <div class="create-time">
+                <i class="fa fa-calendar margin-right-5 font-10"></i>
+                <span class="font-10">{{ item.create_time }}</span>
+              </div>
+              <div class="love">
+                <i class="fa fa-eye font-10" aria-hidden="true"></i>
+                <span class="font-10">{{ item.article_sentiment }}</span>
+              </div>
+              <!-- <div class="love">
               <i class="fa fa-heart margin-right-5 font-10"></i>
               <span class="font-10">9999</span>
             </div>
@@ -28,26 +40,27 @@
               <i class="fa fa-star margin-right-5 font-10"></i>
               <span class="font-10">9999</span>
             </div> -->
+            </div>
+            <!-- 文章解释 -->
+            <div class="eassay-explain">{{ item.article_explain }}</div>
+            <!-- 文章标签 -->
+            <div class="eassay-tag flew flex-warp">
+              <span
+                class="tag-item chip"
+                :key="_item"
+                v-for="_item in item.article_tags.split(',')"
+                >{{ _item }}</span
+              >
+            </div>
+            <!-- 文章详情 -->
+            <div class="text-right">
+              <nuxt-link :to="`/article_details/${item.id}`">
+                <button class="to-details-btn">详情</button>
+              </nuxt-link>
+            </div>
           </div>
-          <!-- 文章解释 -->
-          <div class="eassay-explain">{{ item.article_explain }}</div>
-          <!-- 文章标签 -->
-          <div class="eassay-tag flew flex-warp">
-            <span
-              class="tag-item chip"
-              :key="_item"
-              v-for="_item in item.article_tags.split(',')"
-              >{{ _item }}</span
-            >
-          </div>
-          <!-- 文章详情 -->
-          <div class="text-right">
-            <nuxt-link :to="`/article_details/${item.id}`">
-              <button class="to-details-btn">详情</button>
-            </nuxt-link>
-          </div>
-        </div>
-      </div>
+        </a-col>
+      </a-row>
       <!-- <a-button class="width--97 margin-left-10 fade-in enter-y" type="primary" block @click="touchMoreMeth">
         点击加载更多
       </a-button>
@@ -68,10 +81,10 @@ if (process.browser) {
 }
 export default Vue.extend({
   components: { HomeInfo, infoWrapper, NoData },
-  async fetch({ $axios, store, query , params }) {
+  async fetch({ $axios, store, query, params }) {
     const page = query.page ? Number(query.page) : 1;
     let result = await $axios.get(`/b/h`);
-    if(result){
+    if (result) {
       store.commit("article_list/SET_ARTICLE_HOME_DATA", result.data);
     }
     // await store.dispatch("getArticlHomeDataApi");
@@ -105,7 +118,7 @@ export default Vue.extend({
     touchMoreMeth() {
       this.$router.push({
         name: "index",
-        params:{ page:1 },
+        params: { page: 1 },
         query: { page: this.page + 1 },
       });
     },
@@ -115,25 +128,23 @@ export default Vue.extend({
 
 <style lang="scss">
 .home-body-box {
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
-  background: #fff;
+  // background: #fff;
   padding-top: 10px;
 
   .left-body {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    // display: flex;
+    // flex-direction: column;
     // flex-wrap: wrap;
     transition: all 1s ease-in-out;
     .essay-item {
-      float: left;
-      margin: 0 10px 10px 10px;
       border-radius: 5px;
       padding: 5px;
       box-shadow: 0px 0px 5px #ccc;
       background: #fff;
-      width: calc(100% / 3 - 23px);
+      // width: calc(100% / 3 - 23px);
 
       &:hover {
         transition: all 0.2s ease-in-out;
@@ -245,7 +256,6 @@ export default Vue.extend({
   }
 
   .right-body {
-    width: 20%;
     transition: all 1s ease-in-out;
   }
 }
@@ -315,81 +325,28 @@ $essayBorderColor: #409eff;
 
 @media screen and (max-width: 1600px) and (min-width: 1400px) {
   .home-body-box {
-    width: 80%;
-    .left-body {
-      .essay-item {
-        width: 100%;
-        width: calc(100% / 3 - 23px);
-        .eassay-preview-img-box {
-          height: 200px;
-        }
-      }
-    }
+    width: 70%;
   }
 }
 @media screen and (max-width: 1400px) and (min-width: 1200px) {
   .home-body-box {
-    width: calc(100% - 40px);
-    margin: 0 20px;
-    .left-body {
-      .essay-item {
-        width: 100%;
-        width: calc(100% / 2 - 23px);
-        .eassay-preview-img-box {
-          height: 200px;
-        }
-      }
-    }
+    width: 75%;
   }
 }
 
 @media screen and (max-width: 1200px) and (min-width: 1000px) {
   .home-body-box {
     width: calc(100% - 40px);
-    margin: 0 20px;
-    .left-body {
-      width: 100%;
-      .essay-item {
-        width: calc(100% / 2 - 40px);
-        .eassay-preview-img-box {
-          height: 200px;
-        }
-      }
-    }
   }
 }
 @media screen and (max-width: 1000px) and (min-width: 800px) {
   .home-body-box {
     width: calc(100% - 40px);
-    margin: 0 20px;
-    .left-body {
-      width: 100%;
-      .essay-item {
-        width: calc(100% / 2 - 40px);
-        .eassay-preview-img-box {
-          height: 200px;
-        }
-      }
-    }
   }
 }
 @media screen and (max-width: 800px) {
   .home-body-box {
     width: calc(100% - 40px);
-    margin: 0 20px;
-    .left-body {
-      width: 100%;
-      .aritle-list {
-        width: calc(100% - 20px);
-        .essay-item {
-          margin: 10px;
-          width: 100%;
-          .eassay-preview-img-box {
-            height: 300px;
-          }
-        }
-      }
-    }
   }
 }
 </style>

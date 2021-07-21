@@ -42,6 +42,7 @@ export default {
     plugins: [
         '@/plugins/antd-ui',
         '~/plugins/axios',
+        { src: '~plugins/banner', ssr: false },
         { src: '~plugins/vue-lazy-load', ssr: false },
         { src: '~plugins/clipboard', ssr: false }
     ],
@@ -67,7 +68,8 @@ export default {
     },
     proxy: { // 代理
         '/blogapi/': {
-            target: 'http://121.89.241.42:7779/', //代理转发地址
+            // target: 'http://121.89.241.42:7779/', //代理转发地址
+            target: 'http://127.0.0.1:7779/', //代理转发地址
             changeOrigin: true,
             pathRewrite: {
                 '^/blogapi/': '/',

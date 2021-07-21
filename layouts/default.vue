@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div id="app-bg"></div>
     <a-affix>
       <MyHeader></MyHeader>
     </a-affix>

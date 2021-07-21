@@ -18,6 +18,25 @@ body {
     box-sizing: border-box;
 }
 
+#app-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    // background: url(https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4wyT0?ver=77cc);
+    background: url("assets/images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center;
+    z-index: -1;
+}
+
+.app-bg-color {
+    background: rgba(255, 255, 255, 0.8);
+}
+
 .ityped-cursor {
     font-size: 2.2rem;
     opacity: 1;

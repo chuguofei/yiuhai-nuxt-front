@@ -1,8 +1,6 @@
 <template>
   <div class="aircle-details-view">
-    <div v-if="articleDetailStatus != 200">
-        非法访问呢
-    </div>
+    <div v-if="articleDetailStatus != 200">非法访问呢</div>
     <div v-else>
       <a-skeleton active v-if="!articleDetailComp" />
       <template v-else>
@@ -16,15 +14,11 @@
               <div class="article-common flex justify-center">
                 <div class="create-time">
                   <i class="fa fa-calendar font-15"></i>
-                  <span class="font-15">{{
-                    articleDetailComp.create_time
-                  }}</span>
+                  <span class="font-15">{{ articleDetailComp.create_time }}</span>
                 </div>
                 <div class="sentiment">
                   <i class="fa fa-eye" aria-hidden="true"></i>
-                  <span class="font-15">{{
-                    articleDetailComp.article_sentiment
-                  }}</span>
+                  <span class="font-15">{{ articleDetailComp.article_sentiment }}</span>
                 </div>
                 <!-- <div class="love">
                 <i class="fa fa-heart font-15"></i>
@@ -90,7 +84,9 @@ export default {
   head() {
     return {
       title:
-        "GF." +  this.articleDetailComp?.article_title == undefined ? "加载中..." : this.articleDetailComp?.article_title,
+        "GF." + this.articleDetailComp?.article_title == undefined
+          ? "加载中..."
+          : this.articleDetailComp?.article_title,
     };
   },
   async fetch({ $axios, store, params, query }) {
@@ -113,8 +109,9 @@ export default {
     mkContentComp() {
       let mdStr = this.$store.state.article_details.articleItem.article_content;
       renderMD.heading = (text, level) => {
-        const anchor = this.add(text, level); //渲染目录的方法
-        return `<h${level} id="${anchor}">${text}</h${level}>`;
+        let _text = text.replace(/<[^>]+>/g, "");
+        const anchor = this.add(_text, level); //渲染目录的方法
+        return `<h${level} id="${anchor}">${_text}</h${level}>`;
       };
       return marked(mdStr).replace(/<pre>/g, "<pre class='hljs'>");
     },
@@ -172,9 +169,7 @@ export default {
         //对代码块加行数
         // hljs.lineNumbersBlock(pre[i].querySelector("code"));
         // 获取code去除标签，保留code里的内容 复制的时候用到
-        let median = pre[i]
-          .querySelector("code")
-          .innerHTML.replace(/<\/?.+?>/g, "");
+        let median = pre[i].querySelector("code").innerHTML.replace(/<\/?.+?>/g, "");
         let res = median.replace(/ /g, "");
         //添加3个html标签，分别是复制按钮，放大按钮，和一个textarea存放code里的内容
         let a = `<a class="copy-code"><i class="fa fa-clone" aria-hidden="true"></i></a>`;
@@ -207,7 +202,6 @@ export default {
   },
 };
 </script>
-
 
 <style lang="scss" scope>
 .aircle-details-view {

@@ -22,7 +22,7 @@
   </div>
 </template>
 
-<script >
+<script>
 import FishRun from "@/plugins/animation/fish";
 export default {
   data() {
@@ -69,6 +69,7 @@ export default {
   text-align: center;
   background: #232323;
   color: #fff;
+  z-index: 10;
   // position: absolute;
   // bottom: 0;
   // margin-top: 200px;
