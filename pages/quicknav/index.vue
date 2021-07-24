@@ -5,7 +5,7 @@
         <b>推荐导航</b>
       </div>
       <ul>
-        <li :key="index" v-for="(item, index) in externalLinkArr" class="e-link-item">
+        <li :key="index" v-for="(item, index) in externalLinkArr" class="e-link-item enter-x">
           <a target="_blank" :href="item.href">
             <img :src="item.icon" />
             <span class="e-name" v-text="item.name"></span>

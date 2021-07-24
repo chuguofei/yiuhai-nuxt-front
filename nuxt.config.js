@@ -19,7 +19,6 @@ export default {
             { href: "https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.compat.css", rel: "stylesheet" }
         ],
         script: [
-            { src: "https://libs.baidu.com/jquery/2.1.1/jquery.min.js" },
             { src: "https://at.alicdn.com/t/font_2667664_127w9lfda4p.js" },
             // { src: "/animation/ribbon.min.js" }
         ]

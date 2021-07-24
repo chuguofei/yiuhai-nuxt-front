@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import FishRun from "@/plugins/animation/fish";
+// import FishRun from "@/plugins/animation/fish";
 export default {
   data() {
     return {
@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
     this.runTime();
-    FishRun.init("#flying-fish", "#b2bec3");
+    // FishRun.init("#flying-fish", "#b2bec3");
   },
   beforeDestroy() {
     clearInterval(this.timer);

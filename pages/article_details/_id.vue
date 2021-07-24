@@ -50,6 +50,8 @@
         </a-row>
       </template>
     </div>
+    <!-- 图片预览 -->
+    <ImgPreview v-if="imgPreviewShow" :src="imgPreviewUrl" :show.sync="imgPreviewShow" />
   </div>
 </template>
 
@@ -58,7 +60,8 @@ import marked from "marked";
 import hljs from "highlight.js";
 // import "highlight.js/styles/atom-one-dark-reasonable.css";
 import "highlight.js/styles/an-old-hope.css";
-import AnchorLink from "@/components/aricle_detaile_anchor/index.vue";
+import AnchorLink from "@/components/aricle-detaile-anchor/index.vue";
+import ImgPreview from "@/components/img-preview/index.vue";
 let renderMD = new marked.Renderer();
 marked.setOptions({
   renderer: renderMD,
@@ -71,7 +74,7 @@ marked.setOptions({
   smartypants: false, //使用更为时髦的标点，比如在引用语法中加入破折号。
 });
 export default {
-  components: { AnchorLink },
+  components: { AnchorLink, ImgPreview },
   data() {
     return {
       index: 0,
@@ -79,6 +82,8 @@ export default {
       tocItems: [],
       // =======================>>>
       noId: false,
+      imgPreviewUrl: "",
+      imgPreviewShow: false,
     };
   },
   head() {
@@ -196,6 +201,14 @@ export default {
           } else {
             pre[i].classList.add("code-block-fullscreen");
           }
+        };
+      }
+
+      let img = content.querySelectorAll("img");
+      for (let i = 0; i < img.length; i++) {
+        img[i].onclick = (e) => {
+          this.imgPreviewUrl = img[i].src;
+          this.imgPreviewShow = true;
         };
       }
     },
