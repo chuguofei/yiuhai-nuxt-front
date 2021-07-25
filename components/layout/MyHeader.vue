@@ -62,7 +62,7 @@ export default Vue.extend({
      * 路由跳转
      */
     menuItemClick(path) {
-      this.mobileMenuBarFlag = !this.mobileMenuBarFlag;
+      this.mobileMenuBarFlag = false;
       this.$router.push(path);
     },
   },

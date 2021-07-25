@@ -67,9 +67,7 @@
         </div>
       </div>
       <!-- 广告位 -->
-      <AdvertisingHomeRight
-        :list="['http://www.guofeian.cn/assets/home-header-bg.1d8b896a.jpg']"
-      ></AdvertisingHomeRight>
+      <AdvertisingHomeRight :list="guangGaoArr"></AdvertisingHomeRight>
     </div>
   </div>
 </template>
@@ -94,6 +92,14 @@ export default {
     return {
       guanggaoIndex: 0, // 广告下标
       rightCategoryColosArr: [], // 分类颜色
+      guangGaoArr: [
+        {
+          id: 0,
+          url:
+            "https://gf-oss.oss-cn-beijing.aliyuncs.com/2021-07-25/243311a0-ed08-11eb-9c5a-5bc5045d906a243311a0-ed08-11eb-9c5a-5bc5045d906a",
+          href: "https://www.aliyun.com/1111/new?userCode=w6eynzmz",
+        },
+      ],
     };
   },
   mounted() {

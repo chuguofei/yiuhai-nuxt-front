@@ -1,14 +1,18 @@
 <template>
-  <div class="quick-nav-view fade-in app-bg-color">
-    <div class="recommend-nav">
-      <div class="margin-tb-5 headline">
-        <b>推荐导航</b>
+  <div class="quick-nav-view fade-in app-bg-color margin-bottom-5">
+    <div class="recommend-nav" v-for="(item, index) in quickData.quickData" :key="index">
+      <div class="margin-tb-10 headline">
+        <b>{{ item.navTypeName }}</b>
       </div>
       <ul>
-        <li :key="index" v-for="(item, index) in externalLinkArr" class="e-link-item enter-x">
-          <a target="_blank" :href="item.href">
-            <img :src="item.icon" />
-            <span class="e-name" v-text="item.name"></span>
+        <li
+          :key="_item.id"
+          v-for="_item in item.quickNavList"
+          class="e-link-item enter-x"
+        >
+          <a target="_blank" :href="_item.href">
+            <img :src="_item.icon" />
+            <span class="e-name" v-text="_item.name"></span>
           </a>
         </li>
       </ul>
@@ -23,43 +27,13 @@ export default {
       title: "GF.快捷导航",
     };
   },
-  data() {
-    return {
-      externalLinkArr: [
-        {
-          name: "BootCDN",
-          icon: "https://www.bootcdn.cn/assets/ico/favicon.ico",
-          href: "https://www.bootcdn.cn/",
-        },
-        {
-          name: "bilibili",
-          icon: "https://space.bilibili.com/favicon.ico",
-          href: "https://www.bilibili.com/",
-        },
-        {
-          name: "知乎",
-          icon: "https://static.zhihu.com/heifetz/favicon.ico",
-          href: "https://www.zhihu.com/",
-        },
-        {
-          name: "掘金",
-          icon:
-            "https://sf3-scmcdn2-tos.pstatp.com/xitu_juejin_web/6bdafd801c878b10edb5fed5d00969e9.svg",
-          href: "https://juejin.im/",
-        },
-        {
-          name: "语雀",
-          icon:
-            "https://gw.alipayobjects.com/mdn/prod_resou/afts/img/A*dbj2Tp-tmVgAAAAAAAAAAABkARQnAQ",
-          href: "https://www.yuque.com/",
-        },
-        {
-          name: "tinypng",
-          icon: "https://tinypng.com/images/favicon.ico",
-          href: "https://tinypng.com/",
-        },
-      ],
-    };
+  async asyncData({ $axios }) {
+    let [quickData] = await Promise.all([
+      await $axios.get("/b/q").then((res) => {
+        return { quickData: res.data };
+      }),
+    ]);
+    return { quickData: quickData };
   },
 };
 </script>
@@ -67,7 +41,7 @@ export default {
 <style lang="scss">
 .quick-nav-view {
   width: 80%;
-  box-shadow: 0 0 5px #ccc;
+
   margin: auto;
   min-height: 200px;
 
@@ -84,6 +58,8 @@ export default {
   // 推荐导航
   .recommend-nav {
     padding: 5px 0 0 10px;
+    box-shadow: 0 0 5px #ccc;
+    border-radius: 5px;
     li.e-link-item {
       float: left;
       margin: 0 20px 20px 0px;

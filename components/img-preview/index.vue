@@ -254,7 +254,6 @@ export default {
     img_chushi() {
       var img = document.getElementsByClassName("image-preview")[0];
       var img_b = img.width - img.height;
-      console.log(this.window_inner.width, this.window_inner.height);
       //   if (img_b < 0) {
       //     if (this.window_inner.height > this.window_inner.width) {
       //       this.img_style.height = -1;
