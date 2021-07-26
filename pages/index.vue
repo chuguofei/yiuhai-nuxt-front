@@ -325,7 +325,7 @@ $essayBorderColor: #409eff;
 
 @media screen and (max-width: 1600px) and (min-width: 1400px) {
   .home-body-box {
-    width: 70%;
+    width: 80%;
   }
 }
 @media screen and (max-width: 1400px) and (min-width: 1200px) {

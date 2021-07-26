@@ -41,7 +41,7 @@ export default {
 <style lang="scss">
 .quick-nav-view {
   width: 80%;
-
+    width: 70%
   margin: auto;
   min-height: 200px;
 
