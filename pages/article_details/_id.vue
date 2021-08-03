@@ -51,7 +51,7 @@
       </template>
     </div>
     <!-- 图片预览 -->
-    <ImgPreview v-if="imgPreviewShow" :src="imgPreviewUrl" :show.sync="imgPreviewShow" />
+    <ImgPreview  v-if="imgPreviewShow"  :src="imgPreviewUrl" :visible.sync="imgPreviewShow" />
   </div>
 </template>
 

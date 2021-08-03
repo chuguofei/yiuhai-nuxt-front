@@ -89,7 +89,7 @@ export default {
   proxy: {
     // 代理
     "/blogapi/": {
-      target: "http://127.0.0.1:7779/", //代理转发地址
+      target: "http://121.89.241.42:7779/", //代理转发地址
       changeOrigin: true,
       pathRewrite: {
         "^/blogapi/": "/",
